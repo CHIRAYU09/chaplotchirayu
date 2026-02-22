@@ -43,7 +43,7 @@ export default function PortfolioPanel({
       </p>
 
       {/* Companies list */}
-      <div className="flex-1 min-h-0">
+      <div className="flex-1 min-h-0 overflow-y-auto">
         {companies.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-24 gap-2 text-center">
             <svg
@@ -62,16 +62,16 @@ export default function PortfolioPanel({
             <p className="text-xs text-gray-600">No companies yet</p>
           </div>
         ) : (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 w-full">
             {companies.map((company) => (
               <span
                 key={company}
-                className="group inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-500/10 border border-orange-500/30 rounded-full text-xs font-medium text-orange-300 hover:bg-orange-500/20 transition-colors"
+                className="group inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-500/10 border border-orange-500/30 rounded-full text-xs font-medium text-orange-300 hover:bg-orange-500/20 transition-colors max-w-full min-w-0"
               >
-                {company}
+                <span className="truncate">{company}</span>
                 <button
                   onClick={() => onRemove(company)}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity text-orange-400 hover:text-orange-200"
+                  className="opacity-0 group-hover:opacity-100 transition-opacity text-orange-400 hover:text-orange-200 flex-shrink-0"
                   aria-label={`Remove ${company}`}
                 >
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
